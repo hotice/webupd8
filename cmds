@@ -1,0 +1,12 @@
+start kvm: kvm -m 512 -hda disk.img -cdrom ubuntu.iso -boot d -smp 2
+like on Testdrive: kvm -cdrom ~/lubuntu-maverick-beta1.iso -usb -usbdevice tablet -net nic,model=virtio -net user -soundhw es1370 -vga cirrus
+
+
+proxy terminal: export http_proxy=http://localhost:8118
+
+sed 's/http/\^http/g' somefile | tr -s "^" "\n" | grep http| sed 's/\ .*//g'
+sed 's/http:\/\/s3.tinypic/\^http:\/\/s3.tinypic/g' blog-09-23-2010.xml | tr -s "^" "\n" | grep http| sed 's/\ .*//g' > s3
+
+
+
+
