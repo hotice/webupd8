@@ -12,6 +12,8 @@ notifications
 client side encryption
 optional Ubuntu AppIndicator
 
+There's also Nautilus integration on Linux (there's no mention of this on its website, so I don't know if there's integration for Windows and Mac OSX too), but unfortunately it doesn't work with Nautilus 3.6.
+
 
 
 <h2>Install SparkleShare 1.0 in Ubuntu</h2>
