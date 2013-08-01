@@ -8,7 +8,11 @@ apt-get --ignore-missing install         \
     libcairo-script-interpreter2/raring \
     libdrm2/raring                      \
     libdrm-nouveau2/raring              \
+    libdrm-nouveau2:i386/raring              \
     libdrm-intel1/raring                \
+    libdrm-intel1:i386/raring           \
+    libdrm-radeon1/raring               \
+    libdrm-radeon1:i386/raring               \
     libkms1/raring                      \
     libva1/raring                       \
     libva-x11-1/raring                  \
