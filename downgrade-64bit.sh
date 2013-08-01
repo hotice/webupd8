@@ -7,12 +7,13 @@ apt-get --ignore-missing install         \
     libcairo-gobject2/raring            \
     libcairo-script-interpreter2/raring \
     libdrm2/raring                      \
+    libdrm2:i386/raring                 \
     libdrm-nouveau2/raring              \
-    libdrm-nouveau2:i386/raring              \
+    libdrm-nouveau2:i386/raring         \
     libdrm-intel1/raring                \
     libdrm-intel1:i386/raring           \
     libdrm-radeon1/raring               \
-    libdrm-radeon1:i386/raring               \
+    libdrm-radeon1:i386/raring          \
     libkms1/raring                      \
     libva1/raring                       \
     libva-x11-1/raring                  \
@@ -31,7 +32,9 @@ apt-get --ignore-missing install         \
     libgles2-mesa/raring                \
     libglapi-mesa/raring                \
     libgl1-mesa-glx/raring              \
+    libgl1-mesa-glx:i386/raring              \
     libgl1-mesa-dri/raring              \
+    libgl1-mesa-dri:i386/raring              \
     libgl1-mesa-dri-experimental/raring \
     libosmesa6/raring                   \
     libglu1-mesa/raring                 \
