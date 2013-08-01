@@ -32,9 +32,9 @@ apt-get --ignore-missing install         \
     libgles2-mesa/raring                \
     libglapi-mesa/raring                \
     libgl1-mesa-glx/raring              \
-    libgl1-mesa-glx:i386/raring              \
+    libgl1-mesa-glx:i386/raring         \
     libgl1-mesa-dri/raring              \
-    libgl1-mesa-dri:i386/raring              \
+    libgl1-mesa-dri:i386/raring         \
     libgl1-mesa-dri-experimental/raring \
     libosmesa6/raring                   \
     libglu1-mesa/raring                 \
