@@ -9,6 +9,7 @@ apt-get --ignore-missing install         \
     libdrm2/raring                      \
     libdrm-nouveau2/raring              \
     libdrm-intel1/raring                \
+    libdrm-radeon1/raring               \
     libkms1/raring                      \
     libva1/raring                       \
     libva-x11-1/raring                  \
