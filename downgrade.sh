@@ -15,6 +15,7 @@ apt-get --ignore-missing install         \
     libva-glx1/raring                   \
     libva-tpi1/raring                   \
     libva-egl1/raring                   \
+    libva-drm1/raring                   \
     vainfo/raring                       \
     libxatracker1/raring                \
     libgbm1/raring                      \
