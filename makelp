@@ -1,0 +1,93 @@
+#!/bin/bash
+#PACKAGENAME - the exact package name. Make sure the folder is also named like the package name
+#PACKAGEVERSION - the package version. E.g.: 2.2.0.
+#PPATOUPLOAD - the exact PPA where you want to upload the package too. Format: ppa:your_username/ppa
+#NAMEANDEMAIL - the exact name and email used when you've created the GPG key
+#UBUNTUVERSIONS - the Ubuntu versions you want to use (codename). E.g.: "maverick lucid" or just "maverick".
+#PPABRANDING - in case you want to use a PPA branding, e.g.: webupd8. Use "ppa" if you don't want to use a branding.
+#URGENCY - unless you need to quickly build a package in case a lot of users might be affected by something horrible, it should always be "low"
+#INCREASEVERSION - should be blank unless you want to upload the same package twice in a single day in which case enter 1, 2 and so on.
+#GITBZRSVN - when the script will "cd" into your app folder, it will try to update the source via GIT, SVN or BZR. Enter which of these 3 your application source uses
+
+#CONFIG - CONFIGURE THE FOLLOWING OPTIONS:
+PACKAGENAME="youtube-dl"
+PACKAGEVERSION="2013.10.07"
+PACKAGEVERSION_MINOR="1"
+PACKAGEFOLDER="youtube-dl-2013.10.07"
+PPATOUPLOAD="ppa:nilarimogard/webupd8"
+NAMEANDEMAIL="Alin Andrei <webupd8@gmail.com>"
+UBUNTUVERSIONS="saucy raring quantal precise"
+PPABRANDING="webupd8"
+URGENCY="medium"
+INCREASEVERSION="0"
+CHANGELOGLINE="new upstream release" #specify changelog via <<makelp -m "CHANGELOG HERE">>
+#using the default settings (the once with which the script came), the package name and version will look like this: vlmc_0.2.0~git20101013~webupd8~lucid
+#END OF CONFIG
+
+while getopts "pn:pv:ppa:m:c:v:i:yh\?" opt; do
+	case "$opt" in
+		pn ) PACKAGENAME="$OPTARG"				;;
+		pv ) PACKAGEVERSION="$OPTARG"				;;
+		ppa ) PPATOUPLOAD="$OPTARG"				;;
+		m ) CHANGELOGLINE="$OPTARG"				;;
+		c ) CHANGELOGLINE="$OPTARG"				;;
+		i ) INCREASEVERSION="$OPTARG" 				;;
+		v ) UBUNTUVERSIONS="$OPTARG"				;;
+		y ) FORCEINSTALL="true"				;;
+		h ) usage 0;					;;
+		\?) usage 1;					;;
+		* ) warn "Unknown option '$opt'"; usage 1;	;;
+	esac
+done
+shift $(($OPTIND -1))
+
+
+#enter the package directory:
+cd $PACKAGEFOLDER
+
+	cp debian/changelog /tmp/changelog_orig
+	cp debian/changelog /tmp/changelog
+
+for UBUNTUVERSION in $UBUNTUVERSIONS; do
+	#enter the debian folder:
+#	cd debian/
+
+	#write the changelog for our new daily build with today's date and exact time, new version and so on:
+	sed -i  '1i \ ' /tmp/changelog
+	eval "sed -i  '1i \ -- $NAMEANDEMAIL  $(date +%a), $(date +%d) $(date +%b) $(date +%Y) $(date +%T) $(date +%z)' /tmp/changelog"
+	sed -i  '1i \ ' /tmp/changelog
+	eval "sed -i  '1i \  * $CHANGELOGLINE' /tmp/changelog"
+	sed -i  '1i \ ' /tmp/changelog
+	eval "sed -i  '1i $PACKAGENAME ($PACKAGEVERSION-$PACKAGEVERSION_MINOR~$PPABRANDING~$UBUNTUVERSION$INCREASEVERSION) $UBUNTUVERSION; urgency=$URGENCY' /tmp/changelog"
+	cp /tmp/changelog debian/
+	cp /tmp/changelog_orig /tmp/changelog
+
+	#go to our main package folder:
+#	cd ..
+	
+	
+	#build the packages for Launchpad:
+	debuild -S -sa
+	
+	#go up one level (leave the package folder):
+	cd ..
+	
+	#upload the packages to the PPA:
+	eval "dput -u $PPATOUPLOAD $PACKAGENAME\_$PACKAGEVERSION-$PACKAGEVERSION_MINOR~$PPABRANDING~$UBUNTUVERSION$INCREASEVERSION\_source.changes"
+	#go back to the package folder and if multiple Ubuntu versions were selected ($UBUNTUVERSIONS), restart the process to build and upload the rest of the versions:
+	cd -
+done
+
+#cleanup:
+rm /tmp/changelog_orig /tmp/changelog
+
+#exit the application folder (up one level):
+cd ..
+
+
+
+#put the .git, .svn or .bzr folder back into the package folder so we can get the latest version the next time we'll use the script
+
+#clean up all uploaded files and .orig.tar.gz files:
+rm $PACKAGENAME* > /dev/null 2>&1
+rm *.orig.tar.gz > /dev/null 2>&1
