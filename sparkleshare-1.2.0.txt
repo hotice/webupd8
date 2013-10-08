@@ -1,0 +1,17 @@
+SparkleShare is a cloud collaboration/synchronization tool that uses Git and can either be used with your own Git repository or you can use it with services such as BitBucket, GitHub, Gitorious and Planio.
+
+
+The application features file synchronization, version control, client side encryption and more and is available for Linux, Windows and Mac OS X. According to its homepage, SparkleShare and is great for frequently changing project files like text, office documents and so on, but not for large music/photo collections, large binary files hat change often and so on (because it uses Git which doesn't handle binaries very well).
+
+A new SparkleShare version has been released recently: 1.2.0, which includes many bug fixes such as:
+<ul>
+<li>Fixes to the invite feature, now works when SparkleShare isn't running yet;</li>
+<li>Fix some interface logic in Add dialog;</li>
+<li>Fix some inaccurate sync state messages in the status icon;</li>
+<li>Fix conflict when running when TortoiseGit is installed;</li>
+<li>Fix crash when user cancels initial project download;</li>
+<li>Fix Continue button not enabling when entering encryption password;</li>
+<li>Fix Planio plugin name showing up as Gitorious on Linux;</li>
+<li>Show download speed on initial project add.</li>
+</ul>
+
