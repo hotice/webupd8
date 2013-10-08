@@ -15,3 +15,5 @@ A new SparkleShare version has been released recently: 1.2.0, which includes man
 <li>Show download speed on initial project add.</li>
 </ul>
 
+
+<h2>Install SparkleShare in Ubuntu</h2>
