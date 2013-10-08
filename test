@@ -1,0 +1,7 @@
+#!/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin
+export DISPLAY=:0.0
+export $(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -session)/environ )
+shift
+/usr/bin/notify-send -t 36000 aaa bbbb
+
