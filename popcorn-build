@@ -19,7 +19,7 @@ fi
 echo "- Installing dependencies from repositories..."
 sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get update 
-sudo apt-get install nodejs git -y && echo -e "...Ok.\n"
+sudo apt-get install nodejs git wget -y && echo -e "...Ok.\n"
 
 #npm install for CLI
 echo "- Installing CLI from 'npm'..."
@@ -93,13 +93,15 @@ fi
 
 #create launcher
 echo "- Creating launcher/shortcut in '/usr/share/applications/'..."
+wget https://github.com/hotice/webupd8/raw/master/popcorntime.png
+sudo mv popcorntime.png /usr/share/pixmaps/
 echo "[Desktop Entry]
 Comment=Watch movies in streaming with P2P.
 Name=Popcorn Time
 Exec=/usr/bin/popcorn-time
 StartupNotify=false
 Type=Application
-Icon=totem" | sudo tee /usr/share/applications/popcorn-time.desktop
+Icon=popcorntime" | sudo tee /usr/share/applications/popcorn-time.desktop
 sudo chmod +x /usr/share/applications/popcorn-time.desktop && echo -e "...Ok.\n"
 
 echo "
