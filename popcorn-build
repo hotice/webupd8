@@ -1,5 +1,17 @@
 #!/bin/bash
 
+function checkAPT()
+{
+sleep 1
+for lock in synaptic update-manager software-center apt-get "dpkg " aptitude
+do
+ if ps -U root -u root u | grep "$lock" | grep -v grep > /dev/null; then 
+  echo "Installation won't work. Please close $lock first then try again.";
+  exit
+ fi
+done
+}
+
 #information
 echo "
 Popcorn-Time Beta 2 for Ubuntu-Linux
@@ -16,6 +28,7 @@ else
 fi
 
 #dependencies install
+checkAPT
 echo "- Installing dependencies from repositories..."
 sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get update 
@@ -49,7 +62,9 @@ sudo rm package.json
 sudo wget -O package.json https://raw.github.com/jduncanator/popcorn-app/f3e0ab47057238fbd12b8f8dee3f4fcbe0b36254/package.json 
 
 #repair broken nodejs symlink
-sudo ln -s /usr/bin/nodejs /usr/bin/node
+if [ ! -e /usr/bin/node ]; then
+ sudo ln -s /usr/bin/nodejs /usr/bin/node
+fi
 
 #install NPM dependencies
 echo "- Installing NPM dependencies..."
@@ -66,13 +81,18 @@ cd build/releases/Popcorn-Time/$ARCH/
 sudo mkdir -p /opt
 sudo cp -r Popcorn-Time /opt
 sudo chmod +x /opt/Popcorn-Time/Popcorn-Time
+sudo rm -f "/usr/bin/popcorn-time"
 sudo ln -s /opt/Popcorn-Time/Popcorn-Time /usr/bin/popcorn-time && echo "...Ok.\n"
 
 #fixing libudev
 if [ "$ARCH" == "linux64" ] ; then
- sudo ln -s /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0
+ if [ ! -e /lib/x86_64-linux-gnu/libudev.so.0 ]; then
+  sudo ln -s /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0
+ fi
 elif [ "$ARCH" == "linux32" ] ; then
- sudo ln -s /lib/i386-linux-gnu/libudev.so.1 /lib/i386-linux-gnu/libudev.so.0
+ if [ ! -e /lib/i386-linux-gnu/libudev.so.0 ]; then
+  sudo ln -s /lib/i386-linux-gnu/libudev.so.1 /lib/i386-linux-gnu/libudev.so.0
+ fi
 fi
 
 #fixing playback on 32bit
