@@ -1,4 +1,11 @@
 #!/bin/bash
+# Script author: MrVaykadji http://askubuntu.com/users/176689/mrvaykadji
+# Modified by Andrew <andrew@webupd8.org>:
+#  - use the NodeJS PPA to avoid build failure with grunt-cli
+#  - use the Popcorn Time icon
+#  - added check for apt, dpkg, etc.
+#  - added some checks when creating symbolic links
+#  - added video playback work-around for Ubuntu 32bit 
 
 function checkAPT()
 {
