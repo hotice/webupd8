@@ -75,6 +75,12 @@ elif [ "$ARCH" == "linux32" ] ; then
  sudo ln -s /lib/i386-linux-gnu/libudev.so.1 /lib/i386-linux-gnu/libudev.so.0
 fi
 
+#fixing playback on 32bit
+if [ "$ARCH" == "linux32" ] ; then
+ wget https://github.com/hotice/webupd8/raw/master/libffmpegsumo.so
+ sudo mv libffmpegsumo.so /opt/Popcorn-Time/
+fi
+
 #testing app
 echo "The application 'Popcorn-Time' will now be tested for 5 secondes.
 "
