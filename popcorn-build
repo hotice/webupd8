@@ -78,8 +78,8 @@ fi
 #fixing playback on 32bit
 if [ "$ARCH" == "linux32" ] ; then
  sudo rm -f "/opt/Popcorn-Time/libffmpegsumo.so"
- wget https://github.com/hotice/webupd8/raw/master/libffmpegsumo.so
- sudo mv libffmpegsumo.so /opt/Popcorn-Time/
+ wget https://github.com/hotice/webupd8/raw/master/libffmpegsumo.so -O /tmp/libffmpegsumo.so
+ sudo cp /tmp/libffmpegsumo.so /opt/Popcorn-Time/
 fi
 
 #testing app
@@ -100,8 +100,8 @@ fi
 
 #create launcher
 echo "- Creating launcher/shortcut in '/usr/share/applications/'..."
-wget https://github.com/hotice/webupd8/raw/master/popcorntime.png
-sudo mv popcorntime.png /usr/share/pixmaps/
+wget https://github.com/hotice/webupd8/raw/master/popcorntime.png -O /tmp/popcorntime.png
+sudo cp /tmp/popcorntime.png /usr/share/pixmaps/
 echo "[Desktop Entry]
 Comment=Watch movies in streaming with P2P.
 Name=Popcorn Time
