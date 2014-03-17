@@ -5,7 +5,11 @@
 #  - use the Popcorn Time icon
 #  - added check for apt, dpkg, etc.
 #  - added some checks when creating symbolic links
-#  - added video playback work-around for Ubuntu 32bit 
+#  - added video playback work-around for Ubuntu 32bit
+#  - latest GIT requires ruby-compass
+#  - build app CSS with ruby compass and place it in the correct folder
+#  - it's no longer needed to replace tje package.json file
+#  - new way of selecting the architecture to build the app for
 
 function checkAPT()
 {
