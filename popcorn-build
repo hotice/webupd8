@@ -47,7 +47,7 @@ sudo npm install -g grunt-cli && echo -e "...Ok.\n"
 
 #git clone
 echo "- Cloning GITHUB repository..."
-git clone https://github.com/cettox/popcorn-app.git && echo -e "...Ok.\n"
+git clone https://github.com/popcorn-team/popcorn-app.git && echo -e "...Ok.\n"
 
 #configure
 cd popcorn-app/
