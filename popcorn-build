@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script author: MrVaykadji http://askubuntu.com/users/176689/mrvaykadji
-# Modified by Andrew <andrew@webupd8.org>:
+# Changes made by Andrew <andrew@webupd8.org>:
 #  - use the NodeJS PPA to avoid build failure with grunt-cli
 #  - use the Popcorn Time icon
 #  - added check for apt, dpkg, etc.
@@ -11,6 +11,8 @@
 #  - it's no longer needed to replace the package.json file
 #  - new way of selecting the architecture to build the app for
 #  - added installation of compass via gem for Ubuntu 12.04 because the ruby-compass package from Precise is too old and causes the css compilation to fail
+# Changes made by Pinguy:
+#  - Added check to see if yts.re is blocked. If blocked yts.im is used
 
 function checkAPT()
 {
@@ -50,12 +52,30 @@ sudo apt-get install nodejs ruby-compass git wget -y && echo -e "...Ok.\n"
 echo "- Installing CLI from 'npm'..."
 sudo npm install -g grunt-cli && echo -e "...Ok.\n"
 
+#npm install for Peerflix
+echo "- Installing Peerflix from 'npm'..."
+sudo npm install -g peerflix && echo -e "...Ok.\n"
+
 #git clone
 echo "- Cloning GITHUB repository..."
 git clone https://github.com/Yify/popcorn-app && echo -e "...Ok.\n"
 
 #configure
 cd popcorn-app/
+echo "
+- Checking to see if yts.re is blocked...
+"
+sleep 2
+xdg-open http://yts.re
+sleep 6
+read -p "
+Is the site blocked [y/n] ? 
+"
+if [ "$REPLY" == "y" ] ; then
+echo "- Editting scraper so Popcorn-Time works in countries where yts.re is blocked..."
+sed -i 's/yts.re/yts.im/g' js/frontend/scrapers/yts.js
+sleep 2
+fi
 
 #check architecture
 if [ -n "`arch | grep 64`" ] ; then
@@ -73,7 +93,6 @@ fi
 
 #install NPM dependencies
 echo "- Installing NPM dependencies..."
-sudo npm install -g grunt-cli && echo -e "...Ok.\n"
 sudo npm install && echo -e "...Ok.\n"
 
 #compile css
@@ -120,10 +139,10 @@ if [ "$ARCH" == "linux32" ] ; then
 fi
 
 #testing app
-echo "The application 'Popcorn-Time' will now be tested for 5 secondes.
+echo "The application 'Popcorn-Time' will now be tested for 7 secondes.
 "
 /usr/bin/popcorn-time &
-sleep 5
+sleep 7
 killall Popcorn-Time
 read -p "
 Did you see the Popcorn-Time application ?
