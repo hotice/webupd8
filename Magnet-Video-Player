@@ -1,0 +1,5 @@
+#!/bin/bash
+Magnet_To_Torrent2.py "$1" ./temp.torrent
+xterm -e "peerflix ./temp.torrent --vlc"
+sleep 1
+rm ./temp.torrent
