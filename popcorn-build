@@ -131,7 +131,7 @@ fi
 #testing app
 echo "The application 'Popcorn-Time' will now be tested for 7 secondes.
 "
-/usr/bin/popcorn-time &
+Popcorn-Time/Popcorn-Time &
 sleep 7
 killall Popcorn-Time
 read -p "
