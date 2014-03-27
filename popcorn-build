@@ -83,25 +83,19 @@ sudo npm install && echo -e "...Ok.\n"
 echo "- Building with 'grunt'..."
 sudo grunt build --platforms=$ARCH && echo -e "...Ok.\n"
 
+#libudev0 fix
+cd build/releases/Popcorn-Time/$ARCH/
+if [ ! -e /lib/x86_64-linux-gnu/libudev.so.0 ] && [ ! -e /lib/i386-linux-gnu/libudev.so.0 ]; then
+ sudo sed -i 's/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x30/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x31/g' Popcorn-Time/Popcorn-Time
+fi
+
 #Copy program into /opt
 echo "- Installing Popcorn-Time in '/opt/Popcorn-Time/'"
-cd build/releases/Popcorn-Time/$ARCH/
 sudo mkdir -p /opt
 sudo cp -rf Popcorn-Time /opt
 sudo chmod +x /opt/Popcorn-Time/Popcorn-Time
 sudo rm -f "/usr/bin/popcorn-time"
 sudo ln -s /opt/Popcorn-Time/Popcorn-Time /usr/bin/popcorn-time && echo -e "...Ok.\n"
-
-#fixing libudev
-if [ "$ARCH" == "linux64" ] ; then
- if [ ! -e /lib/x86_64-linux-gnu/libudev.so.0 ]; then
-  sudo ln -s /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0
- fi
-elif [ "$ARCH" == "linux32" ] ; then
- if [ ! -e /lib/i386-linux-gnu/libudev.so.0 ]; then
-  sudo ln -s /lib/i386-linux-gnu/libudev.so.1 /lib/i386-linux-gnu/libudev.so.0
- fi
-fi
 
 #fixing playback on 32bit
 if [ "$ARCH" == "linux32" ] ; then
