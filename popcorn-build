@@ -11,8 +11,6 @@
 #  - it's no longer needed to replace the package.json file
 #  - new way of selecting the architecture to build the app for
 #  - added installation of compass via gem for Ubuntu 12.04 because the ruby-compass package from Precise is too old and causes the css compilation to fail
-# Changes made by Pinguy:
-#  - Added check to see if yts.re is blocked. If blocked yts.im is used
 
 function checkAPT()
 {
@@ -62,23 +60,6 @@ sudo npm install -g grunt-cli && echo -e "...Ok.\n"
 echo "- Cloning GITHUB repository..."
 git clone https://github.com/Yify/popcorn-app && echo -e "...Ok.\n"
 
-#configure
-cd popcorn-app/
-echo "
-- Checking to see if yts.re is blocked...
-"
-sleep 2
-xdg-open http://yts.re
-sleep 6
-read -p "
-Is the site blocked [y/n] ? 
-"
-if [ "$REPLY" == "y" ] ; then
-echo "- Editting scraper so Popcorn-Time works in countries where yts.re is blocked..."
-sed -i 's/yts.re/yts.im/g' js/frontend/scrapers/yts.js
-sleep 2
-fi
-
 #check architecture
 if [ -n "`arch | grep 64`" ] ; then
     #64bits
@@ -94,6 +75,7 @@ if [ ! -e /usr/bin/node ]; then
 fi
 
 #install NPM dependencies
+cd popcorn-app/
 echo "- Installing NPM dependencies..."
 sudo npm install && echo -e "...Ok.\n"
 
