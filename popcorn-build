@@ -75,7 +75,7 @@ if [ ! -e /usr/bin/node ]; then
 fi
 
 #install NPM dependencies
-cd popcorn-app/
+cd popcorntime-desktop/
 echo "- Installing NPM dependencies..."
 sudo npm install && echo -e "...Ok.\n"
 
@@ -117,7 +117,7 @@ if [ "$REPLY" == "y" ] ; then
     #remove building files
     echo "- Removing building files now unwanted..."
     cd ../../../../..
-    sudo rm -rf popcorn-app ~/tmp ~/.npm && echo -e "...Ok.\n"
+    sudo rm -rf popcorntime-desktop ~/tmp ~/.npm && echo -e "...Ok.\n"
 fi
 
 #create launcher
