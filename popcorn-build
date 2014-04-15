@@ -58,7 +58,7 @@ sudo npm install -g grunt-cli && echo -e "...Ok.\n"
 
 #git clone
 echo "- Cloning GITHUB repository..."
-git clone https://github.com/popcorn-org/popcorn-app && echo -e "...Ok.\n"
+git clone https://github.com/time4popcorn/popcorntime-desktop && echo -e "...Ok.\n"
 
 #check architecture
 if [ -n "`arch | grep 64`" ] ; then
