@@ -11,6 +11,9 @@
 #  - it's no longer needed to replace the package.json file
 #  - new way of selecting the architecture to build the app for
 #  - added installation of compass via gem for Ubuntu 12.04 because the ruby-compass package from Precise is too old and causes the css compilation to fail
+#  - re-wrote some parts of the script to get it to work with Popcorn Time 0.3.0 beta
+#  - disable 32bit playback work-around, it's no longer needed
+#  - Popcorn Time now requires libudev1 instead of libudev0 so use reverse work-around for systems without libudev1 (like Ubuntu 12.04)
 
 function checkAPT()
 {
@@ -26,7 +29,7 @@ done
 
 #information
 echo "
-Popcorn-Time Beta 2 for Ubuntu-Linux
+Popcorn-Time 0.3.0 beta for Ubuntu
 ------------------------------------
 WARNING: Popcorn Time streams movies from Torrents. Downloading copyrighted material may be illegal in your country. Use at your own risk.
 "
@@ -54,7 +57,10 @@ fi
 
 #npm install for CLI
 echo "- Installing CLI from 'npm'..."
-sudo npm install -g grunt-cli && echo -e "...Ok.\n"
+sudo npm install -g grunt-cli bower && echo -e "...Ok.\n"
+
+#clean up ~/tmp folder or npm install below will fail
+sudo rm -rf ~/tmp
 
 #git clone
 echo "- Cloning GITHUB repository..."
@@ -77,37 +83,46 @@ fi
 #install NPM dependencies
 cd popcorn-app/
 echo "- Installing NPM dependencies..."
-sudo npm install && echo -e "...Ok.\n"
+npm install && echo -e "...Ok.\n"
 
 #build with grunt
 echo "- Building with 'grunt'..."
-sudo grunt build --platforms=$ARCH && echo -e "...Ok.\n"
+grunt build && echo -e "...Ok.\n"
 
-#libudev0 fix
-cd build/releases/Popcorn-Time/$ARCH/
-if [ ! -e /lib/x86_64-linux-gnu/libudev.so.0 ] && [ ! -e /lib/i386-linux-gnu/libudev.so.0 ]; then
- sudo sed -i 's/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x30/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x31/g' Popcorn-Time/Popcorn-Time
+#libudev1 fix
+#cd build/releases/Popcorn-Time/$ARCH/
+#if [ ! -e /lib/x86_64-linux-gnu/libudev.so.0 ] && [ ! -e /lib/i386-linux-gnu/libudev.so.0 ]; then
+# sudo sed -i 's/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x30/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x31/g' Popcorn-Time/Popcorn-Time
+#fi
+if [ "$ARCH" == "linux64" ] ; then
+ if [ ! -e /lib/x86_64-linux-gnu/libudev.so.1 ]; then
+  sudo ln -s /lib/x86_64-linux-gnu/libudev.so.0 /lib/x86_64-linux-gnu/libudev.so.1
+ fi
+elif [ "$ARCH" == "linux32" ] ; then
+ if [ ! -e /lib/i386-linux-gnu/libudev.so.1 ]; then
+  sudo ln -s /lib/i386-linux-gnu/libudev.so.0 /lib/i386-linux-gnu/libudev.so.1
+ fi
 fi
 
 #Copy program into /opt
 echo "- Installing Popcorn-Time in '/opt/Popcorn-Time/'"
 sudo mkdir -p /opt
-sudo cp -rf Popcorn-Time /opt
+sudo cp -rf build/releases/Popcorn-Time/"$ARCH"/Popcorn-Time /opt
 sudo chmod +x /opt/Popcorn-Time/Popcorn-Time
 sudo rm -f "/usr/bin/popcorn-time"
 sudo ln -s /opt/Popcorn-Time/Popcorn-Time /usr/bin/popcorn-time && echo -e "...Ok.\n"
 
 #fixing playback on 32bit
-if [ "$ARCH" == "linux32" ] ; then
- sudo rm -f "/opt/Popcorn-Time/libffmpegsumo.so"
- wget https://github.com/hotice/webupd8/raw/master/libffmpegsumo.so -O /tmp/libffmpegsumo.so
- sudo cp -f /tmp/libffmpegsumo.so /opt/Popcorn-Time/
-fi
+#if [ "$ARCH" == "linux32" ] ; then
+# sudo rm -f "/opt/Popcorn-Time/libffmpegsumo.so"
+# wget https://github.com/hotice/webupd8/raw/master/libffmpegsumo.so -O /tmp/libffmpegsumo.so
+# sudo cp -f /tmp/libffmpegsumo.so /opt/Popcorn-Time/
+#fi
 
 #testing app
 echo "The application 'Popcorn-Time' will now be tested for 7 secondes.
 "
-Popcorn-Time/Popcorn-Time &
+build/releases/Popcorn-Time/"$ARCH"/Popcorn-Time/Popcorn-Time &
 sleep 7
 killall Popcorn-Time
 read -p "
@@ -116,7 +131,7 @@ If yes, do you wish to remove all the unecessary files now that the program work
 if [ "$REPLY" == "y" ] ; then
     #remove building files
     echo "- Removing building files now unwanted..."
-    cd ../../../../..
+    cd ..
     sudo rm -rf popcorn-app ~/tmp ~/.npm && echo -e "...Ok.\n"
 fi
 
