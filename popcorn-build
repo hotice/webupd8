@@ -14,6 +14,7 @@
 #  - re-wrote some parts of the script to get it to work with Popcorn Time 0.3.0 beta
 #  - disable 32bit playback work-around, it's no longer needed
 #  - Popcorn Time now requires libudev1 instead of libudev0 so use reverse work-around for systems without libudev1 (like Ubuntu 12.04)
+#  - use dev-0.3 branch
 
 function checkAPT()
 {
@@ -80,8 +81,11 @@ if [ ! -e /usr/bin/node ]; then
  sudo ln -s /usr/bin/nodejs /usr/bin/node
 fi
 
-#install NPM dependencies
+#use dev-0.3 branch
 cd popcorn-app/
+git checkout dev-0.3
+
+#install NPM dependencies
 echo "- Installing NPM dependencies..."
 npm install && echo -e "...Ok.\n"
 
