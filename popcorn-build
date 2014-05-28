@@ -91,7 +91,7 @@ npm install && echo -e "...Ok.\n"
 
 #build with grunt
 echo "- Building with 'grunt'..."
-grunt build && echo -e "...Ok.\n"
+grunt build --platforms=all && echo -e "...Ok.\n"
 
 #libudev1 fix
 #cd build/releases/Popcorn-Time/$ARCH/
