@@ -1,0 +1,10 @@
+#!/bin/bash
+
+LANGUAGE="en"
+
+while [ $# -gt 0 ]; do
+    MOVIE="$1"
+    subliminal -l "$LANGUAGE" -- "$MOVIE" || notify-send -i video Subliminal "Couldn't download subtitle for $MOVIE"
+    shift
+done
+notify-send -i video Subliminal "Finished downloading subtitles"
