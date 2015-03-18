@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+
+  
+
+ <vendor>Gedit</vendor>
+ <vendor_url>http://gnome.org/</vendor_url>
+ <icon_name>text-editor</icon_name>
+
+
+ <action id="org.gnome.gedit">
+ 
+ <description>Run Gedit as root</description>
+ <description xml:lang="ar">تشغيل جي إديت كجذر</description>
+ <description xml:lang="ast">Executar Gedit como root</description>
+ <description xml:lang="bg">Стартирай Gedit като администратор</description>
+ <description xml:lang="cs">Spustit Gedit jako root</description>
+ <description xml:lang="da">Kør Gedit med rodrettigheder</description>
+ <description xml:lang="de">Gedit als Systemverwalter starten</description>
+ <description xml:lang="el">Εκτέλεση Gedit ως διαχειριστής</description>
+ <description xml:lang="en_AU">Run Gedit as root</description>
+ <description xml:lang="es">Iniciar Gedit como superusuario</description>
+ <description xml:lang="fi">Käynnistä Gedit pääkäyttäjän oikeuksin.</description>
+ <description xml:lang="fr">Lancer Gedit en tant que root</description>
+ <description xml:lang="he">הרץ את Gedit בתור שורש</description>
+ <description xml:lang="hu">Gedit futtatása rendszergazdaként</description>
+ <description xml:lang="is">Keyra Gedit sem kerfisstjóri (root)</description>
+ <description xml:lang="it">Esegui Gedit come amministratore</description>
+ <description xml:lang="ja">root で Gedit を起動</description>
+ <description xml:lang="kk">Gedit-ды әкімші ретінде орындау</description>
+ <description xml:lang="ko">Root 권한으로 Gedit 작동</description>
+ <description xml:lang="ms">Jalankan Gedit sebagai root</description>
+ <description xml:lang="nb">Kjør Gedit som root</description>
+ <description xml:lang="nl">Gedit draaien met rootbevoegdheid</description>
+ <description xml:lang="pl">Uruchom Gedit jako root</description>
+ <description xml:lang="pt">Executar Gedit como root</description>
+ <description xml:lang="pt_BR">Rodar Gedit como superusuário</description>
+ <description xml:lang="ro">Pornește Gedit ca root</description>
+ <description xml:lang="ru">Запустить Gedit от суперпользователя</description>
+ <description xml:lang="sk">Spustiť Gedit ako root</description>
+ <description xml:lang="sr">Покрени гедит као роот</description>
+ <description xml:lang="th">เรียกทำงาน Gedit ในฐานะ root</description>
+ <description xml:lang="tr">Gedit'ı root olarak çalıştır</description>
+ <description xml:lang="uk">Запустити Gedit з правами суперкористувача</description>
+ <description xml:lang="zh_CN">以 root 身份运行 Gedit</description>
+ <description xml:lang="zh_TW">以 root 身份執行 Gedit</description>
+ <message>Authentication is required to run Gedit as root.</message>
+ <message xml:lang="ast">Ríquese l'autenticación pa executar Gedit como root.</message>
+ <message xml:lang="bg">Изисква се удостоверяване за да стартирате Gedit като администратор</message>
+ <message xml:lang="cs">Pro spuštění aplikace Gedit jako root se vyžaduje autentizace.</message>
+ <message xml:lang="da">Der kræves godkendelse for at køre Gedit som root.</message>
+ <message xml:lang="de">Legitimierung wird benötigt, um Gedit als Systemverwalter zu starten.</message>
+ <message xml:lang="en_AU">Authentication is required to run Gedit as root.</message>
+ <message xml:lang="es">Es necesario autentificarse para iniciar Gedit como superusuario.</message>
+ <message xml:lang="fi">Jotta Gedit voidaan käynnistää pääkäyttäjän oikeuksin, todennus tarvitaan.</message>
+ <message xml:lang="fr">Une authentification est requise pour lancer Gedit en tant que root.</message>
+ <message xml:lang="he">נדרש אימות כדי להריץ את Gedit בתור שורש.</message>
+ <message xml:lang="hu">A Gedit rendszergazdai futtatásához hitelesítés szükséges.</message>
+ <message xml:lang="is">Auðkenningar er krafist til að keyra Gedit sem kerfisstjóri (root)</message>
+ <message xml:lang="it">Per eseguire Gedit come amministratore è richiesta l'autenticazione</message>
+ <message xml:lang="ja">root で Gedit を起動するには認証が必要です。</message>
+ <message xml:lang="kk">Gedit-ды әкімші ретінде орындау үшін аутентификация керек.</message>
+ <message xml:lang="ko">Root 권한으로 Gedit를 작동하려면 인증이 필요합니다.</message>
+ <message xml:lang="ms">Pengesahihan diperlukan untuk jalankan Gedit sebagai root.</message>
+ <message xml:lang="nb">Identitetsbekreftelse kreves for å kjøre Gedit som root.</message>
+ <message xml:lang="nl">Authenticatie is vereist om Gedit met rootbevoegdheid te draaien.</message>
+ <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby uruchomić Gedit w trybie administratora.</message>
+ <message xml:lang="pt">Autenticação necessária para executar Gedit como root.</message>
+ <message xml:lang="pt_BR">Autenticação é requerida para rodar Gedit como superusuário.</message>
+ <message xml:lang="ro">Pentru a porni Gedit ca root este nevoie de autentificare.</message>
+ <message xml:lang="ru">Требуется аутентификация для запуска Gedit от суперпользователя</message>
+ <message xml:lang="sk">Na spustenie Geditu ako root je potrebná autentifikácia.</message>
+ <message xml:lang="sr">Аутентификација је потребна за покретање гедит као роот</message>
+ <message xml:lang="th">ต้องยืนยันตัวบุคคลก่อนเรียกทำงาน Gedit ในฐานะ root</message>
+ <message xml:lang="tr">Gedit'ı root olarak çalıştırmak için kimlik doğrulaması gereklidir</message>
+ <message xml:lang="uk">Вимагається розпізнавання для запуску Gedit з правами суперкористувача.</message>
+ <message xml:lang="zh_CN">以 root 身份运行 Gedit 需要进行身份验证。</message>
+ <message xml:lang="zh_TW">要以 root 身份執行 Gedit 需要認證。</message>
+ <defaults>
+ <allow_any>no</allow_any>
+ <allow_inactive>auth_admin</allow_inactive>
+ <allow_active>auth_admin</allow_active>
+ </defaults>
+ <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/gedit</annotate>
+ <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+ </action>
+
+</policyconfig>

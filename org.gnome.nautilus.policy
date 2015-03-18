@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+
+  
+
+ <vendor>Nautilus</vendor>
+ <vendor_url>http://gnome.org/</vendor_url>
+ <icon_name>system-file-manager</icon_name>
+
+
+ <action id="org.gnome.nautilus">
+ 
+ <description>Run Nautilus as root</description>
+ <description xml:lang="ar">تشغيل نوتيلوس كجذر</description>
+ <description xml:lang="ast">Executar Nautilus como root</description>
+ <description xml:lang="bg">Стартирай Nautilus като администратор</description>
+ <description xml:lang="cs">Spustit Nautilus jako root</description>
+ <description xml:lang="da">Kør Nautilus med rodrettigheder</description>
+ <description xml:lang="de">Nautilus als Systemverwalter starten</description>
+ <description xml:lang="el">Εκτέλεση Nautilus ως διαχειριστής</description>
+ <description xml:lang="en_AU">Run Nautilus as root</description>
+ <description xml:lang="es">Iniciar Nautilus como superusuario</description>
+ <description xml:lang="fi">Käynnistä Nautilus pääkäyttäjän oikeuksin.</description>
+ <description xml:lang="fr">Lancer Nautilus en tant que root</description>
+ <description xml:lang="he">הרץ את Nautilus בתור שורש</description>
+ <description xml:lang="hu">Nautilus futtatása rendszergazdaként</description>
+ <description xml:lang="is">Keyra Nautilus sem kerfisstjóri (root)</description>
+ <description xml:lang="it">Esegui Nautilus come amministratore</description>
+ <description xml:lang="ja">root で Nautilus を起動</description>
+ <description xml:lang="kk">Nautilus-ды әкімші ретінде орындау</description>
+ <description xml:lang="ko">Root 권한으로 Nautilus 작동</description>
+ <description xml:lang="ms">Jalankan Nautilus sebagai root</description>
+ <description xml:lang="nb">Kjør Nautilus som root</description>
+ <description xml:lang="nl">Nautilus draaien met rootbevoegdheid</description>
+ <description xml:lang="pl">Uruchom Nautilus jako root</description>
+ <description xml:lang="pt">Executar Nautilus como root</description>
+ <description xml:lang="pt_BR">Rodar Nautilus como superusuário</description>
+ <description xml:lang="ro">Pornește Nautilus ca root</description>
+ <description xml:lang="ru">Запустить Nautilus от суперпользователя</description>
+ <description xml:lang="sk">Spustiť Nautilus ako root</description>
+ <description xml:lang="sr">Покрени Наутилус као роот</description>
+ <description xml:lang="th">เรียกทำงาน Nautilus ในฐานะ root</description>
+ <description xml:lang="tr">Nautilus'ı root olarak çalıştır</description>
+ <description xml:lang="uk">Запустити Nautilus з правами суперкористувача</description>
+ <description xml:lang="zh_CN">以 root 身份运行 Nautilus</description>
+ <description xml:lang="zh_TW">以 root 身份執行 Nautilus</description>
+ <message>Authentication is required to run Nautilus as root.</message>
+ <message xml:lang="ast">Ríquese l'autenticación pa executar Nautilus como root.</message>
+ <message xml:lang="bg">Изисква се удостоверяване за да стартирате Nautilus като администратор</message>
+ <message xml:lang="cs">Pro spuštění aplikace Nautilus jako root se vyžaduje autentizace.</message>
+ <message xml:lang="da">Der kræves godkendelse for at køre Nautilus som root.</message>
+ <message xml:lang="de">Legitimierung wird benötigt, um Nautilus als Systemverwalter zu starten.</message>
+ <message xml:lang="en_AU">Authentication is required to run Nautilus as root.</message>
+ <message xml:lang="es">Es necesario autentificarse para iniciar Nautilus como superusuario.</message>
+ <message xml:lang="fi">Jotta Nautilus voidaan käynnistää pääkäyttäjän oikeuksin, todennus tarvitaan.</message>
+ <message xml:lang="fr">Une authentification est requise pour lancer Nautilus en tant que root.</message>
+ <message xml:lang="he">נדרש אימות כדי להריץ את Nautilus בתור שורש.</message>
+ <message xml:lang="hu">A Nautilus rendszergazdai futtatásához hitelesítés szükséges.</message>
+ <message xml:lang="is">Auðkenningar er krafist til að keyra Nautilus sem kerfisstjóri (root)</message>
+ <message xml:lang="it">Per eseguire Nautilus come amministratore è richiesta l'autenticazione</message>
+ <message xml:lang="ja">root で Nautilus を起動するには認証が必要です。</message>
+ <message xml:lang="kk">Nautilus-ды әкімші ретінде орындау үшін аутентификация керек.</message>
+ <message xml:lang="ko">Root 권한으로 Nautilus를 작동하려면 인증이 필요합니다.</message>
+ <message xml:lang="ms">Pengesahihan diperlukan untuk jalankan Nautilus sebagai root.</message>
+ <message xml:lang="nb">Identitetsbekreftelse kreves for å kjøre Nautilus som root.</message>
+ <message xml:lang="nl">Authenticatie is vereist om Nautilus met rootbevoegdheid te draaien.</message>
+ <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby uruchomić Nautilus w trybie administratora.</message>
+ <message xml:lang="pt">Autenticação necessária para executar Nautilus como root.</message>
+ <message xml:lang="pt_BR">Autenticação é requerida para rodar Nautilus como superusuário.</message>
+ <message xml:lang="ro">Pentru a porni Nautilus ca root este nevoie de autentificare.</message>
+ <message xml:lang="ru">Требуется аутентификация для запуска Nautilus от суперпользователя</message>
+ <message xml:lang="sk">Na spustenie Nautilusu ako root je potrebná autentifikácia.</message>
+ <message xml:lang="sr">Аутентификација је потребна за покретање Наутилус као роот</message>
+ <message xml:lang="th">ต้องยืนยันตัวบุคคลก่อนเรียกทำงาน Nautilus ในฐานะ root</message>
+ <message xml:lang="tr">Nautilus'ı root olarak çalıştırmak için kimlik doğrulaması gereklidir</message>
+ <message xml:lang="uk">Вимагається розпізнавання для запуску Nautilus з правами суперкористувача.</message>
+ <message xml:lang="zh_CN">以 root 身份运行 Nautilus 需要进行身份验证。</message>
+ <message xml:lang="zh_TW">要以 root 身份執行 Nautilus 需要認證。</message>
+ <defaults>
+ <allow_any>no</allow_any>
+ <allow_inactive>auth_admin</allow_inactive>
+ <allow_active>auth_admin</allow_active>
+ </defaults>
+ <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/nautilus</annotate>
+ <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+ </action>
+
+</policyconfig>
