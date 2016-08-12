@@ -1,0 +1,21 @@
+--- a/main.rb
++++ b/main.rb
+@@ -171,7 +171,7 @@
+ # edit ~/.bettyconfig or say 'use web'
+ # example: "betty what is the weather"
+ def web_query(command)
+-  require 'net/http'
++  require 'net/https'
+   encoded = URI.escape(command)
+   chatmode = BettyConfig.get("chat")
+ 
+@@ -193,7 +193,7 @@
+   begin
+     puts "Asking the internet..." if not chatmode
+     puts "Thinking..." if chatmode
+-    res = Net::HTTP.start(url.host, url.port, :use_ssl => true, :read_timeout => 5) {|https|
++    res = Net::HTTP.start(url.host, url.port, :use_ssl => true, :read_timeout => 5, :verify_mode => OpenSSL::SSL::VERIFY_NONE) {|https|
+       https.request(req)
+     }
+     answer=res.body
+
