@@ -111,10 +111,14 @@ def main():
 
 
 def sigterm_handler(*args):
-    """ ensures that Super key has been reset upon exit"""
+    """ ensures that Super anb Alt keys has been reset upon exit"""
     gsettings_reset( 'org.compiz.unityshell', 
                      '/org/compiz/profiles/unity/plugins/unityshell/',
                      'show-launcher')
+    gsettings_reset('org.compiz.integrated', 
+                     '/org/compiz/integrated/',
+                     'show-hud')
+
     if debug: print('CAUGHT SIGTERM')
     sys.exit(0)
 
